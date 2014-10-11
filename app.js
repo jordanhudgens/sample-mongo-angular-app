@@ -36,7 +36,7 @@ angular.module('mongoList', ['ui.router'])
                 {title: 'listing 7', likes: 1},
             ];
             $scope.addListing = function(){
-                $scope.listings.push({title: $scope.title, likes: 0});
+                $scope.listings.push({title: $scope.title, description: $scope.description,likes: 0});
                 $scope.title = '';
             };
         }]);
