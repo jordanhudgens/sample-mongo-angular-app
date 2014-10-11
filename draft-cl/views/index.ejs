@@ -1,11 +1,50 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+    <title>Mongo List</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+</head>
+
+
+
+<body ng-app="mongoList" ng-controller="MainCtrl">
+
+    <script type="text/ng-template" id="/home.html">
+        <div class="page-header">
+            <h1>Flapper News</h1>
+        </div>
+
+        <form ng-submit="addListing()">
+            <input type="text" placeholder="Title" ng-model="title"></input><br>
+
+            <input type="text-area" placeholder="Description" ng-model="description"></input><br>
+
+            <button type="submit">Create Listing</button>
+        </form>
+
+        <div ng-repeat="listing in listings">
+            Title: {{ listing.title }} - Likes: {{ listing.likes }}</br>
+            {{ listing.description }}
+            <hr>
+        </div>
+
+    </script>
+
+    <script type="text/ng-template" id="/listings.html">
+        <h1>Listing</h1>
+
+        <a href="" ng-click="showDetails=true">Show</a>
+        <a href="" ng-click="showDetails=false">Hide</a>
+
+        <p ng-hide="showDetails">Content will go here</p>
+        <h2 ng-show="showDetails">Anything you want hidden/shown</h2>
+    </script>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</body>
 </html>
