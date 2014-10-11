@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -30,12 +29,13 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
-
 // For DB
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/listings');
 require('./models/Listings');
 require('./models/Questions');
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
