@@ -2,16 +2,20 @@
 <head>
     <title>Mongo List</title>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
     <script src="app.js"></script>
 </head>
+
+
+
 <body ng-app="mongoList" ng-controller="MainCtrl">
 
-First Name: <input name="first-name" ng-model="firstname"><br>
-Last Name: <input name="last-name" ng-model="lastname">
-<div>
-    {{ firstname }}</br>
-    {{ lastname }}</br>
-    {{ mySomething }}
-</div>
+    <h1>Mongo List</h1>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ui-view></ui-view>
+        </div>
+    </div>
 </body>
 </html>
