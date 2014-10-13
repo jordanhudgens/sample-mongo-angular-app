@@ -5,9 +5,9 @@ var router = express.Router();
  * GET home page.
  */
 
-exports.index = function(req, res){
+router.get('/', function(req, res){
   res.render('index', { title: 'Express' });
-};
+});
 
 var mongoose = require('mongoose');
 var Listing = mongoose.model('Listing');
@@ -21,7 +21,7 @@ router.get('/listings', function(req, res, next) {
     });
 });
 
-router.listing('/listings', function(req, res, next) {
+router.post('/listings', function(req, res, next) {
     var listing = new Listing(req.body);
 
     listing.save(function(err, listing){
@@ -31,3 +31,4 @@ router.listing('/listings', function(req, res, next) {
     });
 });
 
+module.exports = router;
