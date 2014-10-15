@@ -17,15 +17,16 @@
         </div>
 
         <form ng-submit="addListing()">
-            <input type="text" placeholder="Title" ng-model="title"></input><br>
+            <input type="text" placeholder="Title" ng-model="title" /><br>
 
-            <input type="text-area" placeholder="Description" ng-model="description"></input><br>
+            <input type="text-area" placeholder="Description" ng-model="description" /><br>
 
             <button type="submit">Create Listing</button>
         </form>
 
         <div ng-repeat="listing in listings">
-            Title: {{ listing.title }} - Likes: {{ listing.likes }}</br>
+            Title: <a ng-href="#/listings/{{listing._id}}">{{ listing.title }}</a>
+            - Likes: {{ listing.likes }}</br>
             {{ listing.description }}
             <hr>
         </div>
@@ -33,13 +34,30 @@
     </script>
 
     <script type="text/ng-template" id="/listings.html">
-        <h1>Listing</h1>
+        <a href="#/home">Home</a>
+        <h1>Listing for {{listing._id}}</h1>
 
         <a href="" ng-click="showDetails=true">Show</a>
         <a href="" ng-click="showDetails=false">Hide</a>
 
-        <p ng-hide="showDetails">Content will go here</p>
-        <h2 ng-show="showDetails">Anything you want hidden/shown</h2>
+        <p ng-hide="showDetails">{{listing.title}}</p>
+        <h2 ng-show="showDetails">{{listing.description}}</h2>
+
+        <span>Likes: {{listing.likes}}</span>
+        <a href="" ng-click="addLike()">Like</a>
+
+        <ul>
+            <li ng-repeat="question in listing.questions">
+                {{question.body}} by <strong>{{question.customer}}</strong>
+            </li>
+        </ul>
+
+        <form ng-submit="addQuestion()">
+            <input type="text" placeholder="Question" ng-model="question" />
+            <input type="text" placeholder="Name" ng-model="name" />
+
+            <button type="submit">Add question</button>
+        </form>
     </script>
 
     <div class="row">
